@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add New Mobile</title>
+	<style>
+		body {
+			background: linear-gradient(to bottom right, #4d79ff, #00cc99);
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			color: white;
+			text-shadow: 2px 2px 4px #000000;
+			margin-top: 50px;
+		}
+
+	form {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  padding: 20px;
+	  background-color: #b3d9ff ;
+	  border-radius: 5px;
+	  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+	  width: 400px;
+	  margin: 0 auto;
+	}
+
+	label {
+	  display: block;
+	  margin-bottom: 10px;
+	  font-size: 16px;
+	  font-weight: bold;
+	  color: white;
+	  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	}
+
+	input[type=text], input[type=number], input[type=date] {
+	  padding: 10px;
+	  margin-bottom: 20px;
+	  border-radius: 5px;
+	  border: none;
+	  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+	  font-size: 16px;
+	}
+
+	button[type=submit] {
+	  background-color: #4CAF50;
+	  color: white;
+	  padding: 10px;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  font-size: 16px;
+	}
+
+	button[type=submit]:hover {
+	  background-color: #3e8e41;
+	}
+</style>
+</head>
+<body>
+	<h1>Add New Mobile</h1>
+	<form action="{{ url_for('add') }}" method="POST">
+		<label for="customer_name">Name:</label>
+		<input type="text" name="customer_name" required><br><br>
+		<label for="brand">Brand:</label>
+		<input type="text" name="brand" required><br><br>
+		<label for="model">Model:</label>
+		<input type="text" name="model" required><br><br>
+		<label for="price">Price:</label>
+		<input type="number" name="price" step="100" required><br><br>
+		<button type="submit">Add</button>
+	</form>
+</body>
+</html>

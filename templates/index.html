@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mobile Management System</title>
+	<style>
+		body {
+			background-image: linear-gradient(to bottom right, #4d79ff, #8c43ff);
+			background-repeat: no-repeat;
+			background-size: cover;
+		  }
+		h1 {
+			text-align: center;
+			color: white;
+			text-shadow: 2px 2px #000000;
+			padding: 30px 0;
+			margin: 0;
+			font-size: 36px;
+			font-weight: bold;
+		  }
+		table {
+			border-collapse: collapse;
+			margin: auto;
+			width: 80%;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0px 0px 20px 0px #00000040;
+			background-color: #f5f5f5;
+		}
+		th, td {
+			text-align: center;
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+		}
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+		th {
+			background-color: #008CBA;
+			color: white;
+			border-top: 1px solid #ddd;
+			border-bottom: none;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+		button {
+			background-color: #008CBA;
+			color: white;
+			padding: 8px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #45a049;
+		}
+		.action-buttons {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.edit-button {
+			background-color: #4CAF50;
+		}
+		.delete-button {
+			background-color: #f44336;
+		}
+	</style>
+</head>
+<body>
+	<h1>Mobile Management System</h1>
+	<a href="{{ url_for('add') }}"><button>Add New Mobile</button></a>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Customer Name</th>
+				<th>Brand</th>
+				<th>Model</th>
+				<th>Price</th>
+				<th>Date of Purchase</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for mobile in mobiles %}
+			<tr>
+				<td>{{ mobile.id }}</td>
+				<td>{{ mobile.customer_name }}</td>
+				<td>{{ mobile.brand }}</td>
+				<td>{{ mobile.model }}</td>
+				<td>{{ mobile.price }}</td>
+				<td>{{ mobile.purchase_date }}</td>
+				<td class="action-buttons">
+					<a href="{{ url_for('edit', id=mobile.id) }}"><button class="edit-button">Edit</button></a>
+					<form action="{{ url_for('delete', id=mobile.id) }}" method="POST">
+						<button class="delete-button" type="submit">Delete</button>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
